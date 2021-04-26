@@ -79,9 +79,15 @@ class SendMultipleMail
     }
 }
 
-$mail = new SendMultipleMail([
+$mail = new SendMail(
+    (new WelcomeMessage())
+);
+
+$mail->send();
+
+$multipleMail = new SendMultipleMail([
     (new SlackMessage()),
     (new WelcomeMessage()),
 ]);
 
-$mail->send();
+$multipleMail->send();
